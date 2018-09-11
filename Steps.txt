@@ -1,0 +1,53 @@
+#31 : 
+-Download the public folder in the project and run the command npm init
+-Run the command npm install express -save to install the package
+-Install ejs using the command npm install ejs -save to pass values to the HTML pages
+-Install the body-parser package to be able to handle POST requests using this command : npm install body-parser -save
+
+#32 :
+-Cretae the main file of the project app.js and it will be an express application, so we need to require express module
+-Now we wanna set template engine as we are gonning to use ejs to make templates
+-Next we wanna be able to serve static files, so we will be using the built in express midleware called express.static
+-Now we need to listen to a port and create a folder for the controller called controllers which is used to controll the behaviour of to do list
+-Require the todoController to be able to fire it in the main app.js file
+-The module.exports in the controller just return a function which will be stored in the todoController variable in the app.js file 
+-Next we can create some routes in the controller to be able to get, add and delete items fro the list
+
+#33 : 
+-We created the todo ejs file and fill it and set the pathof the logo image in the css file to be /assets/styles.css and link jquer cdn and the todo-list.js file to handle ajax request
+
+#34 : 
+-We will create a variable called data which will have many objects inside representing the items and we will pass those items to the todo.ejs file in the callback function of the get method
+
+-We need to require the body-parser module and the middleware that we will be using in post request
+-We will grab the data using body method in the request object and will push that data into the data array variable 
+-Then we will send the data back to the todo.ejs file using json method
+-For the delete method we will be using filter method to filter the item that we are trying to delete and we used the item variable in the url to access which item that we are trying to delete 
+-Filter will filter the data that we want to delete and we are firing a function cycling through the data variable objects and each object that we loop through is gonna be referenced as todo which is the parameter
+
+-The return statement below returns either true or false.If it is true, this item remains in the array, but if it is false, the item comes out of the array
+
+
+#36 : 
+-We are going to use a package called mongoose to help us to connect to the database, so install it using this command : npm install mongoose -save
+-After, we need to require it inside our controller where we are going to use it
+-Now we need to create a database to interact with and store our data called todo
+-Then, we will connect to the databse inside the controller and we will create the schema after it
+-Next we need to have a schema to know the formate of the collection, then create a model to store data within
+-Now we can create new todo item and push it in the database as a test one
+-After creating the test item go to the terminal: c:\data and run the command :"C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe", then go to the MongoDB terminal or atom terminal and run the command fro inside the folder : nodemon app.js
+
+
+#37 :
+-Comment the test item as it has done its role and the data variable as we need to pass the data inside the database with ourselves
+-Inside the get method of the todo route we need to get the data from mongodb and pass it to the view
+-We need to specify first which model to get the data from and then use find method which is used to find either all items in the collection or particular items in the collection
+-Then we are gonna pass an empty item to retrieve all items from the collection, then the second parameter will be a callback function which has two parameters an error and the data that we retrieve
+-Inside the callback fumction to check if there is an error, throw it and pass the data to the view
+
+-Go to the post method to get the data from the view and add it to the database
+-We will create a new variable to hold the new item and we will use req.body to get the item, then use save method to save it to the database which will have a callback function having two parameters the error and the data saved
+
+-Go to the delete method to delete the requested item from mongodb
+-Here we will use find to get a specific item in the url which is the requested item to be deleted and use replace methdo to replace - with space, then remove it using remove method which has a callback function with two parameters an error and data requested
+  
